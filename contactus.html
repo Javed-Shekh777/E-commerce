@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .form-control{
+    height:45px;
+    margin-bottom:10px;
+
+ }
+    .btn{
+    height:50px;
+    width:50%;
+    margin:0px auto;
+    }
+</style>
+ <div class="text-center bg-light mb-3" >
+     <i class="fa-regular fa-address-card  "style="font-size:40px; padding-left:15px;"></i><b style="font-size:40px; padding-left:15px;">Contact<b class="txt-mycolor"style="padding-left:15px;">Us</b></b>
+ </div>
+<div class="row  ">
+    <div class="col-sm-10 mx-auto">
+
+        <div class="row  ">
+
+        <div class="col-sm-6 bg-secondary pt-3 mt-4"style="margin-bottom:30px; margin-left:30px;border-radius:5px;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                 <p><b style="font-size:40px;">Contact <b style="font-size:40px; color:orange;">Us</b></b></p>
+                Name<input type="text" name="name" placeholder="Name." class="form-control"/>
+                Email<input type="email" name="email" placeholder="Email." class="form-control"/>
+                Mobile<input type="number" name="mobile" placeholder="Mobile.." class="form-control"/>
+                Message<textarea style="min-height:80px; resize:none;" name="message" class="form-control"></textarea>
+                <input type="submit" value="save"  class="btn bg-warning mb-2"/>
+            </form>
+        </div>
+        <div class="col-sm-5 bg-secondary pt-4 mt-4 "style="margin-bottom:30px;margin-left:35px;border-radius:5px; ">
+        <p style="font-size:30px;padding-left:30px; "><u style="color:orange">Contact</u> info</p>
+<p style="color:orange; padding-left:60px; margin:0px; font-size:25px;"><i class="fa-solid fa-location-dot me-2"></i><u>Office</u> Address</p>
+        <p style="padding-left:90px; padding-right:100px;">Plot no-44,Behind H.P Petrol Pump,Tedhi Pulia Ring Rd Sector 5, Vikas Nagar,Lucknow Uttar Pradesh 226022</p>
+        <p style="color:orange; padding-left:60px; font-size:25px;margin:0px; "><i class="fa-solid fa-phone me-2"></i><u>Call</u>Us</p>
+        <p style="padding-left:90px;margin:0px;">+91 9764706589</p>
+        <p style="padding-left:90px;">+91 9764706589</p>
+        <p style="color:orange; padding-left:60px;margin:0px; font-size:25px;"><i class="fa-regular fa-envelope me-2"></i><u>Mail</u>Us</p>
+        <p style="padding-left:90px;margin:0px;">Techpile@gmail.com</p>
+        <p style="padding-left:90px;">Sumit87356@gmail.com</p>
+    </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

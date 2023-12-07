@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+
+    .an{
+    height:700px;
+    width:40%;
+
+    margin:0px auto;
+    margin-top:10px;
+    margin-bottom:15px;
+   background:rgba(0,0,0,.5);
+    }
+    .form-control{
+    font-size:20px;
+    height:40px;
+
+
+    margin-bottom:0.8%;
+     border:none;
+      }
+
+      .remember-forgot {
+        margin: 15px 0 15px;
+        font-size: .9em;
+        justify-content: space-between;
+        display: flex;
+        color:white;
+    }
+    .remember-forgot lable input {
+        margin-right: 3px;
+    }
+    ::placeholder{
+    font-size:20px;
+
+    }
+    .al{
+
+    height:50px;
+
+    }
+</style>
+
+
+
+<div class="row">
+    <div class="col-sm-12 n mx-2">
+<div class= "row" style=" background:#AED2FF;">
+   <div class="col-sm-12 an  text-light" style="border-radius:10px; padding-left:50px;padding-right:50px;padding-top:15px; ">
+       <h4><b class="m-0"style="color:black; padding-left:120px;color:white;">REGISTRATION</b> <b style="color:orange">FORM</b></h4>
+        <form method="post" enctype="multipart/form-data" style="font-size:20px;"class="mt-1" >
+           {% csrf_token %}
+            Name<input type="name" name="name" required placeholder="Name..." class="form-control mb-1"/>
+            Email<input type="email" name="email" required placeholder="Email..." class="form-control"/>
+            Mobile<input type="number" name="mobile" required placeholder="Mobile..." class="form-control"/>
+            Password<input type="password" name="passwd" placeholder="Password..." class="form-control"/>
+            Profile Picture<input type="file" name="fu" class="form-control"/>
+            Address<textarea   class="form-control mb-3 "style="height:80px;" name="message" placeholder="Vikas nagar sector-5 lucknow..."></textarea>
+        <div class="input-group input-group-sm  texty-center mb-2">
+            <button class=" form-control  fs-3 text-bg-success al "><b>Login</b></button>
+        </div>
+        <p style="color:white;  text-align:center;">By clicking the Sign Up button, you agree to our<br/> <a href="" >Terms and Condition</a> and <a href="" >PolicyPrivacy</a></p>
+    </form>
+    </div>
+</div>
+    </div>
+</div>
+{% endblock %}

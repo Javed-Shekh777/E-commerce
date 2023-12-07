@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <div class="text-center bg-light ">
+     MY<b class="txt-mycolor">cart</b></b>
+ </div>
+{% if not request.session.user %}
+<script>
+    alert('you have to login first')
+
+    location.href="/user/SignIn/";
+</script>
+{% endif %}
+{% endblock %}

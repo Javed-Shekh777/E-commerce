@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .fa-solid{
+    border:1px solid black;
+    height:30px;
+    width:30px;
+    text-align:center;
+    line-height:30px;
+     }
+        .an{
+    height:700px;
+    width:40%;
+
+    margin:0px auto;
+    margin-top:15px;
+    margin-bottom:15px;
+    background:#A6FF96;
+    }
+    .form-control{
+    font-size:20px;
+    height:40px;
+
+
+    margin-bottom:0.8%;
+     border:none;
+      }
+     .al{
+    margin-left:20%;
+    margin-right:20%;
+    height:50px;
+
+    }
+    #upform{
+    display:none;
+
+    }
+</style>
+
+<div class="text-center bg-light ">
+ <i class="fa-regular fa-user fs-1 me-3"></i><b style="font-size:40px;">My <b style="color:orange;">Profile</b></b>
+ </div>
+{% if  not request.session.user %}
+<script>
+ alert('You have to login first');
+ location.href="/user/SignIn/";
+</script>
+{% endif %}
+<div class="row">
+ <div class="col-sm-8 mx-auto">
+  <!---MYPROFILE START-------->
+     {% for i in rdata  %}
+  <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/{{i.profile}}"  class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8 ">
+      <div class="card-body p-5">
+
+        <p class="card-text">
+            <i class="fa-solid fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{i.name}}<br/>
+            <i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp; {{i.email}} <br/>
+            <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp; {{i.mobile}}<br/>
+         <i class="fa-solid fa-lock"></i>&nbsp;&nbsp;&nbsp;&nbsp; {{i.passwd}}<br/>
+           <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{i.address}} <br/>
+            <a href="#"class="btn btn-sm text-bg-drak fs-4" onclick="demo()" >Edit Profile<i class="fa-solid fa-pen-to-square "></i></a>
+        </p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d889.3263291254145!2d81.88537223839671!3d26.92553369439465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1701852104300!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+    </div>
+  </div>
+</div>
+     {% endfor %}
+     <!----END PROFILE------->
+ </div>
+</div>
+<div class="row" id="upform">
+ <div class="col-sm-12 an  text-light" style="border-radius:10px; padding-left:50px;padding-right:50px;padding-top:15px;">
+        <form method="post" enctype="multipart/form-data" style="font-size:20px;" >
+           {% csrf_token %}
+            Name<input type="name" name="name" required placeholder="Name..." class="form-control mb-2"/>
+            Mobile<input type="number" name="mobile" required placeholder="Mobile..." class="form-control"/>
+            Password<input type="password" name="passwd" placeholder="Password..." class="form-control"/>
+            Profile Picture<input type="file" name="fu" class="form-control"/>
+            Address<textarea   class="form-control mb-3 "style="height:80px;" name="message" placeholder="Vikas nagar sector-5 lucknow..."></textarea>
+        <div class="input-group input-group-sm  texty-center mb-2">
+            <button class=" form-control  fs-3 text-bg-success al "><b>Submit</b></button>
+        </div>
+        <p style="color:white;  text-align:center;">By clicking the Sign Up button, you agree to our<br/> <a href="" >Terms and Condition</a> and <a href="" >PolicyPrivacy</a></p>
+    </form>
+    </div>
+</div>
+
+<script>
+    function demo(){
+   document.getElementById('upform').style.display="block";
+   }
+</script>
+{% endblock %}
